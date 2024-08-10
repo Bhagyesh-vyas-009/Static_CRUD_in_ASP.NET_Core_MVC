@@ -1,0 +1,82 @@
+﻿@model Static_CRUD.Models.ProductModel
+
+@{
+    var id = ViewContext.RouteData.Values["id"];
+}
+
+@{
+    if(Convert.ToInt32(id) > 0)
+    {
+        <h1>Edit Product</h1>
+        <form asp-controller="Product" asp-action="ProductEdit">
+            @Html.HiddenFor(m => m.ProductID)
+            <div class="form-group row my-2">
+                <label class="col-2" asp-for="ProductName">Product Name<span class="text-danger">*</span></label>
+                <input asp-for="ProductName" class="form-control col" />
+                <span asp-validation-for="ProductName" class="text-danger"></span>
+            </div>
+            <div class="form-group row my-2">
+                <label class="col-2" asp-for="ProductPrice">Product Price<span class="text-danger">*</span></label>
+                <input asp-for="ProductPrice" class="form-control col" />
+                <span asp-validation-for="ProductPrice" class="text-danger"></span>
+            </div>
+            <div class="form-group row my-2">
+                <label class="col-2" asp-for="ProductCode">Product Code<span class="text-danger">*</span></label>
+                <input asp-for="ProductCode" class="form-control col" />
+                <span asp-validation-for="ProductCode" class="text-danger"></span>
+            </div>
+            <div class="form-group row my-2">
+                <label class="col-2" asp-for="Description">Description<span class="text-danger">*</span></label>
+                <input asp-for="Description" class="form-control col" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group row my-2">
+                <label class="col-2" asp-for="UserID">User ID<span class="text-danger">*</span></label>
+                <input asp-for="UserID" class="form-control col" />
+                <span asp-validation-for="UserID" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-warning">Edit Product</button>
+        </form>
+    }
+    else
+    {
+        <h1>Add New Product</h1>
+        <form asp-controller="Product" asp-action="ProductAdd">
+            <div class="form-group row my-2">
+                <label class="col-2" asp-for="ProductName">Product Name<span class="text-danger">*</span></label>
+                <input asp-for="ProductName" class="form-control col" />
+                <span asp-validation-for="ProductName" class="text-danger"></span>
+            </div>
+            <div class="form-group row my-2">
+                <label class="col-2" asp-for="ProductPrice">Product Price<span class="text-danger">*</span></label>
+                <input asp-for="ProductPrice" class="form-control col" />
+                <span asp-validation-for="ProductPrice" class="text-danger"></span>
+            </div>
+            <div class="form-group row my-2">
+                <label class="col-2" asp-for="ProductCode">Product Code<span class="text-danger">*</span></label>
+                <input asp-for="ProductCode" class="form-control col" />
+                <span asp-validation-for="ProductCode" class="text-danger"></span>
+            </div>
+            <div class="form-group row my-2">
+                <label class="col-2" asp-for="Description">Description<span class="text-danger">*</span></label>
+                <input asp-for="Description" class="form-control col" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group row my-2">
+                <label class="col-2" asp-for="UserID">User ID<span class="text-danger">*</span></label>
+                <input asp-for="UserID" class="form-control col" />
+                <span asp-validation-for="UserID" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-primary">Add Product</button>
+            <a asp-asp-controller="Product" asp-action="ProductList" class="btn btn-danger">Cancel</a>
+        </form>
+    }
+}
+
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
